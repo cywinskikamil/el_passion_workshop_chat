@@ -2,11 +2,18 @@ defmodule ElPasssionWorkshopChat.Session do
   alias ElPasssionWorkshopChat.User
   alias ElPasssionWorkshopChat.Repo
 
-  def login(session_params) do
-    user = Repo.get_by!(User, %{email: String.downcase(session_params["email"])})
-    case Comeonin.Bcrypt.checkpw(session_params["password"], user.crypted_password) do
+  def login(params) do
+    user = Repo.get_by(User, email: String.downcase(params["email"]))
+    case authenticate(user, params["password"]) do
       true -> {:ok, user}
-      _ -> :error
+      _    -> :error
+    end
+  end
+
+  defp authenticate(user, password) do
+    case user do
+      nil -> false
+      _   -> Comeonin.Bcrypt.checkpw(password, user.crypted_password)
     end
   end
 end
