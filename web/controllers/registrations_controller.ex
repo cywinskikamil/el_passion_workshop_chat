@@ -1,6 +1,5 @@
 defmodule ElPasssionWorkshopChat.RegistrationController do
   use ElPasssionWorkshopChat.Web, :controller
-  alias ElPasssionWorkshopChat.Repo
   alias ElPasssionWorkshopChat.User
 
   def new(conn, _params) do

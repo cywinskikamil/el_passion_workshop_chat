@@ -4,7 +4,7 @@ use Mix.Config
 # you can enable the server option below.
 config :el_passsion_workshop_chat, ElPasssionWorkshopChat.Endpoint,
   http: [port: 4001],
-  server: false
+  server: true
 
 # Print only warnings and errors during test
 config :logger, level: :warn
