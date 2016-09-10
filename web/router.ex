@@ -22,6 +22,8 @@ defmodule ElPasssionWorkshopChat.Router do
     post "/rooms", RoomController, :create
     get "/rooms/:id", RoomController, :show
     delete "/rooms/:id", RoomController, :delete
+    get "/registrations/new", RegistrationController, :new
+    post "/registrations", RegistrationController, :create
   end
 
   # Other scopes may use custom stacks.
