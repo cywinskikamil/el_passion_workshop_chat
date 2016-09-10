@@ -17,6 +17,11 @@ defmodule ElPasssionWorkshopChat.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
+    get "/rooms", RoomController, :index
+    get "/rooms/new", RoomController, :new
+    post "/rooms", RoomController, :create
+    get "/rooms/:id", RoomController, :show
+    delete "/rooms/:id", RoomController, :delete
   end
 
   # Other scopes may use custom stacks.

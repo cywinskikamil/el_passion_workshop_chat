@@ -1,0 +1,3 @@
+<%= @room.name %>
+<br>
+<%= link "Back", to: room_path(@conn, :index) %>
