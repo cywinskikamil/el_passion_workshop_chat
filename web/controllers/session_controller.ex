@@ -15,6 +15,7 @@ defmodule ElPasssionWorkshopChat.SessionController do
       :error ->
         conn
         |> put_flash(:info, "Wrong login or password")
+        |> redirect(to: "/login")
     end
   end
 end
