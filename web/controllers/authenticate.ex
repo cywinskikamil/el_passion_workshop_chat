@@ -13,6 +13,7 @@ defmodule ElPasssionWorkshopChat.Plugs.Authenticate  do
         conn
         |> put_flash(:error, "You need to be signed in to seeee")
         |> redirect(to: session_path(conn, :new))
+        |> halt
     end
   end
 end
