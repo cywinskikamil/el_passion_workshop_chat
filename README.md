@@ -20,4 +20,4 @@ Ready to run in production? Please [check our deployment guides](http://www.phoe
   * Source: https://github.com/phoenixframework/phoenix
 
 ## POLECAM:
-https://warm-river-87485.herokuapp.com/
+[Check this out](https://warm-river-87485.herokuapp.com/)
