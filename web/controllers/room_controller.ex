@@ -3,6 +3,8 @@ defmodule ElPasssionWorkshopChat.RoomController do
   alias ElPasssionWorkshopChat.Repo
   alias ElPasssionWorkshopChat.Room
 
+  plug ElPasssionWorkshopChat.Plugs.Authenticate
+
   def index(conn, _params) do
     rooms = Repo.all(Room)
     render conn, "index.html", %{rooms: rooms}
