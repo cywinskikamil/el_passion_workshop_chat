@@ -5,6 +5,7 @@ defmodule ElPasssionWorkshopChat.Room do
     field :name, :string
 
     has_many :messages, ElPasssionWorkshopChat.Message
+    belongs_to :user, ElPasssionWorkshopChat.User
 
     timestamps()
   end
@@ -14,9 +15,9 @@ defmodule ElPasssionWorkshopChat.Room do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:name])
+    |> cast(params, [:name, :user_id])
     |> unique_constraint(:name)
-    |> validate_required([:name])
+    |> validate_required([:name, :user_id])
     |> validate_length(:name, min: 8)
   end
 end

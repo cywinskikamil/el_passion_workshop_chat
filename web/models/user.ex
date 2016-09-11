@@ -7,6 +7,7 @@ defmodule ElPasssionWorkshopChat.User do
     field :password, :string, virtual: true
 
     has_many :messages, ElPasssionWorkshopChat.Message
+    has_many :rooms, ElPasssionWorkshopChat.Room
 
     timestamps()
   end

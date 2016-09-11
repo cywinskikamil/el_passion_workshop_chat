@@ -3,11 +3,12 @@ defmodule ElPasssionWorkshopChat.RoomController do
   alias ElPasssionWorkshopChat.Repo
   alias ElPasssionWorkshopChat.Room
   alias ElPasssionWorkshopChat.Message
+  import ElPasssionWorkshopChat.Session, only: [current_user: 1]
 
   plug ElPasssionWorkshopChat.Plugs.Authenticate
 
   def index(conn, _params) do
-    rooms = Repo.all(Room)
+    rooms = Repo.all(Room) |> Repo.preload(:user)
     render conn, "index.html", %{rooms: rooms}
   end
 
@@ -17,6 +18,7 @@ defmodule ElPasssionWorkshopChat.RoomController do
   end
 
   def create(conn, %{"room" => room_params}) do
+    room_params = Map.put(room_params, "user_id", current_user(conn).id)
     changeset = Room.changeset(%Room{}, room_params)
 
     case Repo.insert(changeset) do
