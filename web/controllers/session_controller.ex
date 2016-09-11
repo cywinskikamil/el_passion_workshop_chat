@@ -18,4 +18,11 @@ defmodule ElPasssionWorkshopChat.SessionController do
         |> redirect(to: "/login")
     end
   end
+
+  def delete(conn, _) do
+    conn
+    |> delete_session(:current_user)
+    |> put_flash(:info, "Succesfully logged out")
+    |> redirect(to: room_path(conn, :index))
+  end
 end

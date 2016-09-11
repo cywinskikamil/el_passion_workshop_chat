@@ -52,6 +52,7 @@ defmodule ElPasssionWorkshopChat.Web do
       import ElPasssionWorkshopChat.Router.Helpers
       import ElPasssionWorkshopChat.ErrorHelpers
       import ElPasssionWorkshopChat.Gettext
+      import ElPasssionWorkshopChat.Session, only: [current_user: 1, logged_in?: 1]
     end
   end
 
