@@ -2,7 +2,7 @@ defmodule ElPasssionWorkshopChat.UserSocket do
   use Phoenix.Socket
 
   ## Channels
-  # channel "room:*", ElPasssionWorkshopChat.RoomChannel
+  channel "room:*", ElPasssionWorkshopChat.RoomChannel
 
   ## Transports
   transport :websocket, Phoenix.Transports.WebSocket
