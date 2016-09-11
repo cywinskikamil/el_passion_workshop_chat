@@ -20,7 +20,7 @@ chatInput.on("keypress", e => {
 })
 
 channel.on("new_msg", payload => {
-  messagesContainer.append(`<br>[${user}]: ${payload.body}`)
+  messagesContainer.append(`<br>[${payload.user}]: ${payload.body}`)
 })
 
 export default socket

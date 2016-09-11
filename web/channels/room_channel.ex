@@ -10,7 +10,7 @@ defmodule ElPasssionWorkshopChat.RoomChannel do
 
   def handle_in("new_msg", %{"body" => body, "user_email" => user_email, "room_id" => room_id}, socket) do
     create_message(body, user_email, room_id)
-    broadcast! socket, "new_msg", %{body: body}
+    broadcast! socket, "new_msg", %{user: user_email, body: body}
     {:noreply, socket}
   end
 
