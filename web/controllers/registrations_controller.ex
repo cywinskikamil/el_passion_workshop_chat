@@ -14,6 +14,7 @@ defmodule ElPasssionWorkshopChat.RegistrationController do
       {:ok, _user} ->
         conn
         |> put_flash(:info, "Your account was created")
+        |> put_session(:current_user, _user.id)
         |> redirect(to: room_path(conn, :index))
       {:error, changeset} ->
         render(conn, "new.html", changeset: changeset)
