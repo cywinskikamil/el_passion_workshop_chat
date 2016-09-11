@@ -4,6 +4,8 @@ defmodule ElPasssionWorkshopChat.Room do
   schema "rooms" do
     field :name, :string
 
+    has_many :messages, ElPasssionWorkshopChat.Message
+
     timestamps()
   end
 

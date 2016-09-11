@@ -2,6 +2,7 @@ defmodule ElPasssionWorkshopChat.RoomController do
   use ElPasssionWorkshopChat.Web, :controller
   alias ElPasssionWorkshopChat.Repo
   alias ElPasssionWorkshopChat.Room
+  alias ElPasssionWorkshopChat.Message
 
   plug ElPasssionWorkshopChat.Plugs.Authenticate
 
@@ -30,7 +31,10 @@ defmodule ElPasssionWorkshopChat.RoomController do
 
   def show(conn, %{"id" => id}) do
     room = Repo.get!(Room, id)
-    render(conn, "show.html", room: room)
+    query = from m in Message, where: m.room_id == ^id
+    messages = Repo.all(query) |> Repo.preload(:user)
+    IO.inspect(messages)
+    render(conn, "show.html", room: room, messages: messages)
   end
 
   def delete(conn, %{"id" => id}) do
@@ -39,7 +43,7 @@ defmodule ElPasssionWorkshopChat.RoomController do
     Repo.delete!(room)
 
     conn
-    |> put_flash(:info, "User deleted successfully.")
+    |> put_flash(:info, "Room deleted successfully.")
     |> redirect(to: room_path(conn, :index))
   end
 end

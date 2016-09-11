@@ -14,7 +14,7 @@ let user = $('#current-user').text()
 
 chatInput.on("keypress", e => {
   if(e.keyCode == 13) {
-    channel.push("new_msg", {body: chatInput.val()})
+    channel.push("new_msg", {body: chatInput.val(), user_email: user, room_id: roomId})
     chatInput.val("")
   }
 })

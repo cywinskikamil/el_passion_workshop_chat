@@ -5,6 +5,9 @@ defmodule ElPasssionWorkshopChat.User do
     field :email, :string
     field :crypted_password, :string
     field :password, :string, virtual: true
+
+    has_many :messages, ElPasssionWorkshopChat.Message
+
     timestamps()
   end
 
